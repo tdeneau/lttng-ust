@@ -109,6 +109,8 @@ int pthread_mutex_unlock(pthread_mutex_t *mutex)
 	}
 
 	thread_in_trace = 1;
+	tracepoint(lttng_ust_pthread, pthread_mutex_start_unlock, mutex,
+		LTTNG_UST_CALLER_IP());
 	retval = mutex_unlock(mutex);
 	tracepoint(lttng_ust_pthread, pthread_mutex_unlock, mutex,
 		retval, LTTNG_UST_CALLER_IP());

@@ -63,6 +63,13 @@ TRACEPOINT_EVENT(lttng_ust_pthread, pthread_mutex_unlock,
 	)
 )
 
+TRACEPOINT_EVENT(lttng_ust_pthread, pthread_mutex_start_unlock,
+	TP_ARGS(pthread_mutex_t *, mutex, void *, ip),
+	TP_FIELDS(
+		ctf_integer_hex(void *, mutex, mutex)
+	)
+)
+
 #endif /* _TRACEPOINT_UST_PTHREAD_H */
 
 #undef TRACEPOINT_INCLUDE
